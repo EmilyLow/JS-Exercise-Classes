@@ -181,7 +181,36 @@ class Instructor extends Lambdasian {
         + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
-class Student {
+class Student extends Lambdasian{
+  constructor(input) {
+    super(input);
+    this.previousBackground = input.previousBackground;
+    this.className = input.className;
+    this.favSubjects = input.favSubjects;
+  }
+
+  listSubjects() {
+    let resultString =  "Loving ";
+    //Should have done this with something more complicated than a for loop? Reduce seems like it would be more complicated not less.
+    for (let i = 0; i < this.favSubjects.length; i++) {
+      resultString += " " + this.favSubjects[i];
+      if ( i != (this.favSubjects.length-1)) {
+        resultString += ",";
+      }
+    }
+
+    resultString += "!";
+    return resultString;
+
+  }
+
+  PRAassignment (subject) {
+    return `${this.name} has submitted a PR for ${subject}`;
+  }
+
+  sprintChallenge(subject) {
+    return `${this.name} has begun sprint challenge on ${subject}`
+  }
 
 }
 
